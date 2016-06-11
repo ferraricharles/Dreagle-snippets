@@ -1,0 +1,17 @@
+{
+  "name": "Dreagle_Snippets",
+  "version": "0.0.0",
+  "description": "Free Drone zone guiding tests",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dreagle Team",
+  "license": "MIT",
+  "dependencies": {
+    "dateformat": "^1.0.12",
+    "ardrone-autonomy": "^0.1.2",
+    "ar-drone": "^0.3.3"
+    
+  }
+}

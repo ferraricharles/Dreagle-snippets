@@ -1,0 +1,5 @@
+ardrone-autonomy
+node_modules/*
+go_and_back.js
+mission-*
+venv
