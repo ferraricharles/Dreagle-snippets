@@ -1,0 +1,1 @@
+{"status":1,"whitelist":["00:00:00:00:00:01","00:00:00:00:00:02","00:00:00:00:00:05"],"actions":{"pia":1,"cls":1},"authentication":{"username":"dreagle","password":"dreagle"},"firmware":{"version":"0.1","logs":"/tmp/mylog.log"}}

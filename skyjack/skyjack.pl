@@ -1,5 +1,8 @@
 #!/usr/bin/perl
-
+use strict;
+use warnings;
+use JSON;
+use Data::Dumper;
 # skyjack, by samy kamkar
 
 # this software detects flying drones, deauthenticates the
@@ -9,6 +12,7 @@
 # http://samy.pl
 # dec 2, 2013
 
+my $filename = 'config.json';
 
 # mac addresses of ANY type of drone we want to attack
 # Parrot owns the 90:03:B7 block of MACs and a few others
@@ -16,6 +20,20 @@
 my @drone_macs = qw/90:03:B7 A0:14:3D 00:12:1C 00:26:7E/;
 my @whitelist_arr = ();
 #my @whitelist_arr = ("C0:EE:FB:4A:18:DF", "90:03:B7:0C:A6:17");
+
+my $json_text = do {
+   open(my $json_fh, "<:encoding(UTF-8)", $filename)
+      or die("Can't open \$filename\": $!\n");
+   local $/;
+   <$json_fh>
+};
+my $json = JSON->new;
+my $data = $json->decode($json_text);
+# Copy the White list from the config file
+@whitelist_arr = $data->{'whitelist'};
+
+my $isPushItAway = ($data->{'actions'}->{'pia'} == 1);
+my $isCustomLanding = ($data->{'actions'}->{'cls'} == 1);
 
 
 use strict;
@@ -177,6 +195,14 @@ while ($box == 0)
 				sudo("iwgetid", "wlan1", "-r");
 				#sudo($nodejs, $controljs);
 
+				if ($isPushItAway){
+				    print "\n\nPUSHING DRONE AWAY\n";
+				}
+
+				if ($isCustomLanding){
+				    print "\n\n\n LANDING THE DRONE";
+				}
+				
 			}
 			print "\n";			
 		}
