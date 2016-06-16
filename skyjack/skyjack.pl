@@ -197,20 +197,26 @@ while ($box == 0)
 				sudo("iwgetid", $interface, "-r");
 				#sudo($nodejs, $controljs);
 
-				if ($isPushItAway){
-				    print "\n\nPUSHING DRONE AWAY\n";
-				    sudo($nodejs, $pushAway);
-				    next;
-				}
-				if ($isCustomLanding){
+				#if ($isPushItAway){
+				#    print "\n\nPUSHING DRONE AWAY\n";
+				#    sudo($nodejs, $pushAway);
+				#    next;
+				#}
+				#if ($isCustomLanding){
 				    print "\n\n\n LANDING THE DRONE";
 				    sudo($nodejs, $landing);
 				    next;
-				}
+				#}
 
 			}
-			print "\n";			
+			print "\n";
+			
+			sleep(15);
+			exit 0;
 		}
+		
+	sleep 5;
+	exit 0;
 
 
 	$box++;
