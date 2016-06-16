@@ -5,6 +5,9 @@ var mission  = autonomy.createMission();
 
 //Set the actions you want to perform for that mission
 mission.land();
+//mission.altitude(2)
+  //     .backward(2); //Go back for 2 meters. This parameter should be improved for the final version!!!
+
 
 //Execute the mission!
 mission.run(function (err, result) {
