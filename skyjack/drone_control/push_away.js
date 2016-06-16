@@ -4,8 +4,7 @@ var autonomy = require('ardrone-autonomy');
 var mission  = autonomy.createMission();
 
 //Set the actions you want to perform for that mission
-mission.altitude(2)
-       .backward(2); //Go back for 2 meters. This parameter should be improved for the final version!!!
+mission.land();
 
 //Execute the mission!
 mission.run(function (err, result) {
