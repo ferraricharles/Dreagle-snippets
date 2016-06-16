@@ -43,6 +43,8 @@ my $interface1 	= shift || "wlan2";
 
 # the JS to control our drone
 my $controljs  	= shift || "drone_control/drone_pwn.js";
+my $pushAway = shift || "drone_control/push_away.js";
+my $landing = shift || "drone_control/push_away.js";
 
 # paths to applications
 my $dhclient	= "dhclient";
@@ -197,12 +199,14 @@ while ($box == 0)
 
 				if ($isPushItAway){
 				    print "\n\nPUSHING DRONE AWAY\n";
+				    sudo($nodejs, $pushAway);
 				}
 
 				if ($isCustomLanding){
 				    print "\n\n\n LANDING THE DRONE";
+				    sudo($nodejs, $landing);
 				}
-				
+
 			}
 			print "\n";			
 		}
