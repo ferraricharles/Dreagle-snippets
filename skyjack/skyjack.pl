@@ -201,13 +201,10 @@ while ($box == 0)
 				    print "\n\nPUSHING DRONE AWAY\n";
 				    sudo($nodejs, $pushAway);
 				    next;
-				} else if ($isCustomLanding){
+				}
+				if ($isCustomLanding){
 				    print "\n\n\n LANDING THE DRONE";
 				    sudo($nodejs, $landing);
-				    next;
-				} else {
-				    print "\n\nPUSHING DRONE AWAY\n";
-				    sudo($nodejs, $pushAway);
 				    next;
 				}
 
