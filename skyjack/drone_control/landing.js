@@ -4,8 +4,8 @@ var autonomy = require('ardrone-autonomy');
 var mission  = autonomy.createMission();
 
 //Set the actions you want to perform for that mission
-mission.takeoff()   //This parameter I think should be removed for the final version!
-       .land();
+//mission.takeoff()   //This parameter I think should be removed for the final version!
+mission.land();
 
 //Execute the mission!
 mission.run(function (err, result) {

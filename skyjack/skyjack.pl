@@ -12,7 +12,7 @@ use Data::Dumper;
 # http://samy.pl
 # dec 2, 2013
 
-my $filename = 'config.json';
+my $filename = '../config.json';
 
 # mac addresses of ANY type of drone we want to attack
 # Parrot owns the 90:03:B7 block of MACs and a few others
@@ -38,13 +38,13 @@ my $isCustomLanding = ($data->{'actions'}->{'cls'} == 1);
 
 use strict;
 
-my $interface  	= shift || "wlan1";
-my $interface1 	= shift || "wlan2";
+my $interface1  	= shift || "wlan1";
+my $interface	 	= shift || "wlan2";
 
 # the JS to control our drone
 my $controljs  	= shift || "drone_control/drone_pwn.js";
 my $pushAway = shift || "drone_control/push_away.js";
-my $landing = shift || "drone_control/push_away.js";
+my $landing = shift || "drone_control/landing.js";
 
 # paths to applications
 my $dhclient	= "dhclient";
@@ -65,7 +65,7 @@ sudo($ifconfig, $interface, "down");
 #sudo($airmon, "start", $interface);
 
 # tmpfile for ap output
-my $tmpfile = "~/Desktop/ds";
+my $tmpfile = "dumpFile";
 my %skyjacked;
 
 my $box = 0;
@@ -194,7 +194,7 @@ while ($box == 0)
 
 				print "\n\nTAKING OVER DRONE\n";
 				 
-				sudo("iwgetid", "wlan1", "-r");
+				sudo("iwgetid", $interface, "-r");
 				#sudo($nodejs, $controljs);
 
 				if ($isCustomLanding){
